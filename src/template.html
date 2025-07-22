@@ -6,12 +6,30 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="container-form">
-      <section class="section-input">
-        <label for="city-name" class="label-input">Enter City Name: </label>
-        <input type="text" id="city-name" name="city-name" />
-      </section>
-      <button id="btn-search" type="button">Search</button>
+    <div id="container">
+      <main id="main-container">
+        <div id="container-header-main">
+          <div id="logo-container">
+            <img
+              src="./assets/img/weather-app-logo.svg"
+              alt="Weather App Logo"
+              title="Weather App Logo"
+              class="logo-icon"
+            />
+            <h1 class="title-app">Weather App</h1>
+          </div>
+          <form class="form-field">
+            <input
+              type="text"
+              id="city-name"
+              name="city-name"
+              placeholder="Enter City Name"
+            />
+
+            <button id="btn-search" type="button">Search</button>
+          </form>
+        </div>
+      </main>
     </div>
   </body>
 </html>
