@@ -2,6 +2,10 @@ import { getData } from "./controllerAPI";
 
 const inputCityName = document.querySelector("#city-name");
 const btnSearch = document.querySelector("#btn-search");
+const address = document.querySelector(".address");
+const conditions = document.querySelector(".conditions");
+const temp = document.querySelector(".temp");
+const iconWeather = document.querySelector("weather-icon");
 
 function renderUI() {
   btnSearch.addEventListener("click", () => {
@@ -11,5 +15,7 @@ function renderUI() {
     getData(valueInputCityName);
   });
 }
+
+
 
 export { renderUI };
