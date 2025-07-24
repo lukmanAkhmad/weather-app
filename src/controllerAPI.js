@@ -1,3 +1,5 @@
+import { showData } from "./uiControl";
+
 async function getData(cityName = "jakarta") {
   try {
     const response = await fetch(
@@ -5,18 +7,10 @@ async function getData(cityName = "jakarta") {
       { mode: "cors" },
     );
     const jsonResponse = await response.json();
-    processData(jsonResponse);
-    return jsonResponse;
+    showData(jsonResponse);
   } catch (err) {
     console.log(err.message);
-    return err;
   }
 }
 
-function processData(jsondata) {
-  console.log(jsondata);
-  console.log(`City Name: ${jsondata.address}`);
-  console.log(`Weather: ${jsondata.currentConditions.conditions}`);
-}
-
-export { processData, getData };
+export { getData };
