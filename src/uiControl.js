@@ -5,12 +5,13 @@ import humidityIcon from "./assets/img/humidity-percentage.svg";
 import thermometerIcon from "./assets/img/thermometer.svg";
 
 function getCityName() {
-  const btnSearch = document.querySelector("#btn-search");
+  const form = document.querySelector(".form-field");
   const inputCityName = document.querySelector("#city-name");
 
-  btnSearch.addEventListener("click", () => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     const valueInputCityName = inputCityName.value;
-    console.log("btn search on click");
+    console.log("btn search on submit");
     console.log(`nama kota = ${valueInputCityName}`);
     getData(valueInputCityName);
   });
