@@ -5,7 +5,6 @@ import humidityIcon from "./assets/img/humidity-percentage.svg";
 import thermometerIcon from "./assets/img/thermometer.svg";
 
 function getCityName() {
-  const mainContainer = document.querySelector("#main-container");
   const btnSearch = document.querySelector("#btn-search");
   const inputCityName = document.querySelector("#city-name");
 
@@ -13,9 +12,22 @@ function getCityName() {
     const valueInputCityName = inputCityName.value;
     console.log("btn search on click");
     console.log(`nama kota = ${valueInputCityName}`);
-    renderMainContent(mainContainer);
     getData(valueInputCityName);
   });
+}
+
+function createLoadingComponent() {
+  const mainContainer = document.querySelector("#main-container");
+  const containerLoading = document.createElement("div");
+  containerLoading.setAttribute("id", "container-loading");
+
+  removeContainerMainContent();
+  mainContainer.appendChild(containerLoading);
+}
+
+function removeLoadingComponent() {
+  const containerLoading = document.querySelector("#container-loading");
+  containerLoading.remove();
 }
 
 function renderMainContent(parentNode) {
@@ -98,6 +110,11 @@ function renderMainContent(parentNode) {
 }
 
 function showData(jsondata) {
+  removeLoadingComponent();
+  const mainContainer = document.querySelector("#main-container");
+  removeContainerMainContent();
+  renderMainContent(mainContainer);
+
   const address = document.querySelector(".address");
   const conditions = document.querySelector(".conditions");
   const temp = document.querySelector(".temp");
@@ -112,8 +129,8 @@ function showData(jsondata) {
 
   address.textContent = jsondata.resolvedAddress;
   conditions.textContent = jsondata.currentConditions.conditions;
-  temp.textContent = `${jsondata.currentConditions.temp}`;
-  feelsLike.textContent = `Feels Like: ${jsondata.currentConditions.feelslike}`;
+  temp.textContent = `${jsondata.currentConditions.temp}°F`;
+  feelsLike.textContent = `Feels Like: ${jsondata.currentConditions.feelslike}°F`;
   humidity.textContent = `Humidity: ${jsondata.currentConditions.humidity}%`;
   wind.textContent = `Wind Speed: ${jsondata.currentConditions.windspeed} km/h`;
 
@@ -123,4 +140,15 @@ function showData(jsondata) {
   iconWeather.alt = iconName;
 }
 
-export { getCityName, showData };
+function removeContainerMainContent() {
+  const mainContainer = document.querySelector("#main-container");
+  const containerMainContent = document.querySelector(
+    "#container-main-content",
+  );
+
+  if (mainContainer.contains(containerMainContent)) {
+    containerMainContent.remove();
+  }
+}
+
+export { getCityName, showData, createLoadingComponent };
