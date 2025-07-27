@@ -11,6 +11,7 @@ function getCityName() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const valueInputCityName = inputCityName.value;
+    if (valueInputCityName === "") return;
     console.log("btn search on submit");
     console.log(`nama kota = ${valueInputCityName}`);
     getData(valueInputCityName);
