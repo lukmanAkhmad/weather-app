@@ -1,4 +1,8 @@
-import { showData, createLoadingComponent } from "./uiControl";
+import {
+  showData,
+  createLoadingComponent,
+  renderErrorContent,
+} from "./uiControl";
 
 async function getData(cityName = "jakarta") {
   createLoadingComponent();
@@ -11,6 +15,7 @@ async function getData(cityName = "jakarta") {
     showData(jsonResponse);
   } catch (err) {
     console.log(err.message);
+    renderErrorContent();
   }
 }
 
