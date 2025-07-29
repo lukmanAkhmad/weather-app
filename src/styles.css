@@ -100,6 +100,22 @@ body {
   align-items: flex-start;
   justify-content: center;
 }
+.container-btn-unit {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-celsius {
+  width: 90px;
+  height: 90px;
+}
+.btn-fahrenheit {
+  width: 90px;
+  height: 90px;
+}
 .address {
   font-size: 35px;
   font-weight: bolder;
