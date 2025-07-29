@@ -102,6 +102,7 @@ body {
   grid-template-rows: 1fr 1fr;
   background-color: var(--color-pink);
   padding: 15px;
+  border-radius: 15px;
 }
 
 #container-top-midle-main {
@@ -126,16 +127,20 @@ body {
   grid-column: 2 / 3;
 
   display: flex;
+  justify-content: space-evenly;
+  width: 90px;
   align-items: center;
-  justify-content: center;
 }
 .btn-celsius {
-  width: 90px;
-  height: 90px;
+  height: 30px;
+  flex-grow: 1;
+  border-radius: 5px 0px 0px 5px;
+  border-right-width: 1px solid;
 }
 .btn-fahrenheit {
-  width: 90px;
-  height: 90px;
+  height: 30px;
+  flex-grow: 1;
+  border-radius: 0px 5px 5px 0px;
 }
 .address {
   font-size: 35px;
@@ -191,4 +196,54 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.toggle-checkbox {
+  display: none;
+}
+.label-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: fit-content;
+  border: 3px solid #343434;
+  border-radius: 20px;
+  background: #343434;
+  font-weight: bold;
+  color: #343434;
+  cursor: pointer;
+}
+.label-container::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0%;
+  border-radius: 20px;
+  background: white;
+  transition: all 0.3s;
+}
+.label-container div {
+  padding: 6px;
+  text-align: center;
+  z-index: 1;
+}
+.toggle-checkbox:checked + .label-container::before {
+  left: 50%;
+}
+.toggle-checkbox:checked + .label-container div:first-child {
+  color: white;
+  transition: color 0.3s;
+}
+.toggle-checkbox:checked + .label-container div:last-child {
+  color: #343434;
+  transition: color 0.3s;
+}
+.toggle-checkbox + .label-container div:first-child {
+  color: #343434;
+  transition: color 0.3s;
+}
+.toggle-checkbox + .label-container div:last-child {
+  color: white;
+  transition: color 0.3s;
 }

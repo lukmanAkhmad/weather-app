@@ -45,14 +45,18 @@ function renderMainContent(parentNode) {
   const paraConditions = document.createElement("p");
   paraConditions.classList.add("conditions");
 
-  const containerBtnUnit = document.createElement("div");
-  containerBtnUnit.classList.add("container-btn-unit");
-  const btnCelcius = document.createElement("button");
-  btnCelcius.classList.add("btn-celsius");
-  btnCelcius.textContent = "°C";
-  const btnFahrenheit = document.createElement("button");
-  btnFahrenheit.classList.add("btn-fahrenheit");
-  btnFahrenheit.textContent = "°F";
+  const checkboxUnit = document.createElement("input");
+  checkboxUnit.setAttribute("id", "checkbox-unit");
+  checkboxUnit.setAttribute("type", "checkbox");
+  checkboxUnit.setAttribute("value", "unit");
+  checkboxUnit.classList.add("toggle-checkbox");
+  const labelCheckbox = document.createElement("label");
+  labelCheckbox.classList.add("label-container");
+  labelCheckbox.setAttribute("for", "checkbox-unit");
+  const labelCelsius = document.createElement("div");
+  labelCelsius.textContent = "°C";
+  const labelFahrenheit = document.createElement("div");
+  labelFahrenheit.textContent = "°F";
 
   const containerTempAndIcon = document.createElement("div");
   containerTempAndIcon.classList.add("container-temp-and-icon");
@@ -97,8 +101,10 @@ function renderMainContent(parentNode) {
   containerAddressAndConditions.appendChild(paraAddress);
   containerAddressAndConditions.appendChild(paraConditions);
 
-  containerBtnUnit.appendChild(btnCelcius);
-  containerBtnUnit.appendChild(btnFahrenheit);
+  labelCheckbox.appendChild(labelCelsius);
+  labelCheckbox.appendChild(labelFahrenheit);
+  containerBtnUnit.appendChild(checkboxUnit);
+  containerBtnUnit.appendChild(labelCheckbox);
 
   containerTempAndIcon.appendChild(paraTemp);
   containerTempAndIcon.appendChild(imgIcon);
@@ -138,6 +144,8 @@ function showData(jsondata) {
   const humidity = document.querySelector(".para-humidity");
   const wind = document.querySelector(".para-wind");
 
+  console.log(jsondata);
+
   const addressData = jsondata.resolvedAddress;
   const conditionsData = jsondata.currentConditions.conditions;
   const temperatureData = Math.round(jsondata.currentConditions.temp);
@@ -145,29 +153,26 @@ function showData(jsondata) {
   const humidityData = jsondata.currentConditions.humidity;
   const windData = Math.round(jsondata.currentConditions.windspeed);
 
-  const btnCelcius = document.querySelector(".btn-celsius");
-  const btnFahrenheit = document.querySelector(".btn-fahrenheit");
-  btnCelcius.addEventListener("click", () => {
-    console.log("button celsius on click");
-    temp.textContent = "";
-    temp.textContent = `${temperatureData}°C`;
-    feelsLike.textContent = "";
-    feelsLike.textContent = `Feels Like: ${feelsLikeData}°C`;
-    wind.textContent = "";
-    wind.textContent = `Wind Speed: ${windData} km/h`;
-  });
-
-  btnFahrenheit.addEventListener("click", () => {
-    console.log("button fahrenheit on click");
-    temp.textContent = "";
-    const fahrenheitTempUnit = Math.round((temperatureData * 9) / 5 + 32);
-    temp.textContent = `${fahrenheitTempUnit}°F`;
-    feelsLike.textContent = "";
-    const fahrenheitFeelsLikeUnit = Math.round((feelsLikeData * 9) / 5 + 32);
-    feelsLike.textContent = `Feels Like: ${fahrenheitFeelsLikeUnit}°F`;
-    wind.textContent = "";
-    const mphWindUnit = Math.round(windData / 1.609344);
-    wind.textContent = `Wind Speed: ${mphWindUnit} mph`;
+  const checkboxUnit = document.querySelector("#checkbox-unit");
+  checkboxUnit.addEventListener("change", () => {
+    if (checkboxUnit.checked) {
+      temp.textContent = "";
+      const fahrenheitTempUnit = Math.round((temperatureData * 9) / 5 + 32);
+      temp.textContent = `${fahrenheitTempUnit}°F`;
+      feelsLike.textContent = "";
+      const fahrenheitFeelsLikeUnit = Math.round((feelsLikeData * 9) / 5 + 32);
+      feelsLike.textContent = `Feels Like: ${fahrenheitFeelsLikeUnit}°F`;
+      wind.textContent = "";
+      const mphWindUnit = Math.round(windData / 1.609344);
+      wind.textContent = `Wind Speed: ${mphWindUnit} mph`;
+    } else {
+      temp.textContent = "";
+      temp.textContent = `${temperatureData}°C`;
+      feelsLike.textContent = "";
+      feelsLike.textContent = `Feels Like: ${feelsLikeData}°C`;
+      wind.textContent = "";
+      wind.textContent = `Wind Speed: ${windData} km/h`;
+    }
   });
 
   address.textContent = addressData;
