@@ -154,7 +154,7 @@ function showData(jsondata) {
     feelsLike.textContent = "";
     feelsLike.textContent = `Feels Like: ${feelsLikeData}°C`;
     wind.textContent = "";
-    wind.textContent = `Wind Speed: ${windData} mph`;
+    wind.textContent = `Wind Speed: ${windData} km/h`;
   });
 
   btnFahrenheit.addEventListener("click", () => {
