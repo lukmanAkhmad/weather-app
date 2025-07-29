@@ -197,11 +197,14 @@ function removeContainerMainContent() {
 function renderErrorContent() {
   removeLoadingComponent();
 
+  const form = document.querySelector(".form-field");
   const mainContainer = document.querySelector("#main-container");
   const containerMainContent = document.createElement("div");
   containerMainContent.setAttribute("id", "container-main-content");
   const paraErrorMessage = document.createElement("p");
   paraErrorMessage.classList.add("para-error-message");
+
+  form.reset();
   paraErrorMessage.textContent = "City Not Found";
 
   containerMainContent.appendChild(paraErrorMessage);
