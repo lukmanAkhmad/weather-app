@@ -45,6 +45,8 @@ function renderMainContent(parentNode) {
   const paraConditions = document.createElement("p");
   paraConditions.classList.add("conditions");
 
+  const containerBtnUnit = document.createElement("div");
+  containerBtnUnit.classList.add("container-btn-unit");
   const checkboxUnit = document.createElement("input");
   checkboxUnit.setAttribute("id", "checkbox-unit");
   checkboxUnit.setAttribute("type", "checkbox");
