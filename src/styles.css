@@ -9,6 +9,8 @@
   --color-yellow-paradise: #ffe45e;
   --color-pink: #ff6392;
   --color-grey: #202633;
+  --color-purple: #77216f;
+  --color-purple-white: #9f639a;
 }
 
 @font-face {
@@ -75,8 +77,12 @@ body {
   outline: none;
   padding: 7px;
 }
+#city-name:focus {
+  border: 1px solid blue;
+  box-shadow: 2px 3px 7px 0px grey;
+}
 #btn-search {
-  background-color: #77216f;
+  background-color: var(--color-purple);
   height: 33px;
   border: 0;
   color: white;
@@ -84,6 +90,9 @@ body {
   font-weight: 500;
   border-radius: 5px;
   width: 90px;
+}
+#btn-search:hover {
+  background-color: var(--color-purple-white);
 }
 #container-main-content {
   grid-row: 2 / 3;
