@@ -3,6 +3,14 @@
   padding: 0;
 }
 
+:root {
+  --color-blue: #5aa9e6;
+  --color-blue-sky: #7fc8f8;
+  --color-yellow-paradise: #ffe45e;
+  --color-pink: #ff6392;
+  --color-grey: #202633;
+}
+
 @font-face {
   font-family: BebasNeue-Regular;
   src: url(./assets/font/BebasNeue-Regular.ttf);
@@ -17,13 +25,16 @@ body {
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   grid-template-rows: 1fr;
-  height: inherit;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--color-grey);
 }
 #main-container {
-  border: 1px solid black;
   grid-column: 2 / 3;
   display: grid;
   grid-template-rows: 1fr 2fr 2fr;
+  background-color: var(--color-grey);
+  gap: 90px;
 }
 #container-header-main {
   grid-row: 1 / 2;
@@ -80,7 +91,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  background-color: #b9ccc954;
+  background-color: var(--color-pink);
+  padding: 15px;
 }
 
 #container-top-midle-main {
