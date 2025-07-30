@@ -178,6 +178,9 @@ body {
 }
 .weather-details {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 }
 
 #container-loading {
