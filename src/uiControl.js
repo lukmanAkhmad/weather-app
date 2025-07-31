@@ -147,6 +147,7 @@ function showData(jsondata) {
   const wind = document.querySelector(".para-wind");
 
   console.log(jsondata);
+  manageData(jsondata);
 
   const addressData = jsondata.resolvedAddress;
   const conditionsData = jsondata.currentConditions.conditions;
@@ -218,4 +219,14 @@ function renderErrorContent() {
   mainContainer.appendChild(containerMainContent);
 }
 
-export { getCityName, showData, createLoadingComponent, renderErrorContent };
+function manageData(jsondata) {
+  console.log(jsondata.days);
+}
+
+export {
+  getCityName,
+  showData,
+  createLoadingComponent,
+  renderErrorContent,
+  manageData,
+};
