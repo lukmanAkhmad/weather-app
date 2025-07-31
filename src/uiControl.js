@@ -32,7 +32,8 @@ function removeLoadingComponent() {
   containerLoading.remove();
 }
 
-function renderMainContent(parentNode) {
+function renderMainContent() {
+  const mainContainer = document.querySelector("#main-container");
   const containerMainContent = document.createElement("div");
   containerMainContent.setAttribute("id", "container-main-content");
 
@@ -129,14 +130,13 @@ function renderMainContent(parentNode) {
   containerMainContent.appendChild(containerTempAndIcon);
   containerMainContent.appendChild(containerWeatherDetails);
 
-  parentNode.appendChild(containerMainContent);
+  mainContainer.appendChild(containerMainContent);
 }
 
 function showData(jsondata) {
   removeLoadingComponent();
-  const mainContainer = document.querySelector("#main-container");
   removeContainerMainContent();
-  renderMainContent(mainContainer);
+  renderMainContent();
 
   const address = document.querySelector(".address");
   const conditions = document.querySelector(".conditions");
